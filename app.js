@@ -1,3 +1,5 @@
+// app.js or server.js (backend)
+
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
@@ -13,9 +15,21 @@ const app = express();
 // Body parser
 app.use(express.json());
 
-// Enable CORS (configure for development and production)
+// Enable CORS for multiple origins
+const allowedOrigins = [
+  'http://localhost:5173', // Local development frontend
+  'https://task-tracker-frontend-ebon.vercel.app', // Production frontend
+];
+
+// Configure CORS middleware
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' ? 'https://task-tracker-frontend-ebon.vercel.app/' : 'http://localhost:5173',  
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true); // Allow the request if the origin matches
+    } else {
+      callback(new Error('Not allowed by CORS')); // Reject if the origin does not match
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
