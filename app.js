@@ -1,4 +1,3 @@
-// app.js
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
@@ -14,8 +13,12 @@ const app = express();
 // Body parser
 app.use(express.json());
 
-// Enable CORS
-app.use(cors());
+// Enable CORS (configure for development and production)
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' ? 'https://task-tracker-frontend-ebon.vercel.app/' : 'http://localhost:5173',  
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 
 // Dev logging middleware
 if (process.env.NODE_ENV === 'development') {
