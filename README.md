@@ -20,7 +20,7 @@ This Task Tracker application allows users to track the progress of their projec
 ## Links:
 - **Frontend GitHub Repository:** [Task Tracker Frontend](https://github.com/ShivamG1979/Task_Tracker_Frontend)
 - **Backend GitHub Repository:** [Task Tracker Backend](https://github.com/ShivamG1979/Task_Tracker_Backend)
-- **Frontend Deployment Link:** [Vercel Link](https://vercel.com/shivam-guptas-projects-b61e1726)
+- **Frontend Deployment Link:** [Vercel Link](https://task-tracker-frontend-ebon.vercel.app/)
 - **Backend Deployment Link:** [Render Link](https://task-tracker-backend-da1d.onrender.com)
 
 ## How to Run the Application Locally:
